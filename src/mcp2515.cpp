@@ -917,10 +917,10 @@ void MCP2515::intHandler(void) {
 	    }
     }
     if(interruptFlags & ERRIF) {
-      //Serial.println("E");
+      Serial.println("E");
     }
     if(interruptFlags & MERRF) {
-      //Serial.println("M");
+      Serial.println("M");
     }
 
     Write(CANINTF, 0); //Now, acknowledge the interrupts by clearing the intf bits
