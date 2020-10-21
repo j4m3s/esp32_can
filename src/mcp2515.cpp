@@ -145,9 +145,9 @@ void MCP2515::initializeResources()
   callbackQueueM15 = xQueueCreate(16, sizeof(CAN_FRAME));
 
                             //func        desc    stack, params, priority, handle to task, core to pin to
-  xTaskCreatePinnedToCore(&task_MCP15, "CAN_RX_M15", 4096, this, 8, NULL, 0);
-  xTaskCreatePinnedToCore(&task_MCPInt15, "CAN_INT_M15", 4096, this, 19, &intDelegateTask, 0);
-  xTaskCreatePinnedToCore(&task_ResetWatcher, "CAN_RSTWATCH_M15", 1536, this, 7, &taskHandleReset, 0);
+  xTaskCreatePinnedToCore(&task_MCP15, "CAN_RX_M15", 4096, this, 8, NULL, 1);
+  xTaskCreatePinnedToCore(&task_MCPInt15, "CAN_INT_M15", 4096, this, 19, &intDelegateTask, 1);
+  xTaskCreatePinnedToCore(&task_ResetWatcher, "CAN_RSTWATCH_M15", 1536, this, 7, &taskHandleReset, 1);
 
   initializedResources = true;
 }
