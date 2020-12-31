@@ -188,9 +188,9 @@ void MCP2517FD::initializeResources()
   callbackQueueMCP = xQueueCreate(32, sizeof(CAN_FRAME_FD));
                            //func        desc    stack, params, priority, handle to task, which core to pin to
   //Tasks take up the stack you allocate here in bytes plus 388 bytes overhead            
-  xTaskCreatePinnedToCore(&task_MCPCAN, "CAN_FD_CALLBACK", 4096, this, 8, &taskHandleMCPCAN, 0);
-  xTaskCreatePinnedToCore(&task_MCPIntFD, "CAN_FD_INT", 2560, this, 19, &intTaskFD, 0);
-  xTaskCreatePinnedToCore(&task_ResetWatcher, "CAN_RSTWATCH", 1536, this, 7, &taskHandleReset, 0);
+  xTaskCreatePinnedToCore(&task_MCPCAN, "CAN_FD_CALLBACK", 4096, this, 8, &taskHandleMCPCAN, 1);
+  xTaskCreatePinnedToCore(&task_MCPIntFD, "CAN_FD_INT", 2560, this, 19, &intTaskFD, 1);
+  xTaskCreatePinnedToCore(&task_ResetWatcher, "CAN_RSTWATCH", 1536, this, 7, &taskHandleReset, 1);
 
   initializedResources = true;
 
